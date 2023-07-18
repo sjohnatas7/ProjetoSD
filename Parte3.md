@@ -10,7 +10,7 @@ Este é o módulo principal central responsável pelo controle do display BCD de
 
  Ele recebe um clock (`ck`), uma entrada de habilitação (`enb`), um sinal de reset síncrono (`rst_s`), um sinal de carregamento (`ld`), e possui três saídas de segmento (`sgm0`, `sgm1`, `sgm2`) e uma saída `enb_3`.
 
-Neste módulo, são declarados três blocos de contadores (`bloco1, bloco2, bloco3`). Cada bloco é uma instância do módulo `bcd_bloco` e está interligado de forma sequencial. O primeiro bloco recebe o sinal de habilitação original (`enb_0`), enquanto os blocos subsequentes recebem o sinal de habilitação do bloco anterior (`enb_1, enb_2`).
+Neste módulo, são declarados três blocos de contadores (`bloco1`, `bloco2`, `bloco3`). Cada bloco é uma instância do módulo `bcd_bloco` e está interligado de forma sequencial. O primeiro bloco recebe o sinal de habilitação original (`enb_0`), enquanto os blocos subsequentes recebem o sinal de habilitação do bloco anterior (`enb_1, enb_2`).
 
 A saída `enb_3` é o sinal de habilitação de quando o contador chega ao limite, isto é, chega a 999.
 

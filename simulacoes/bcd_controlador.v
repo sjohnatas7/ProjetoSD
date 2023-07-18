@@ -8,15 +8,15 @@ module bcd_tb;
 	wire [6:0] sgm1;
 	wire [6:0] sgm2;
 
-  // Instantiate the counter module
+  // Instancia um bcd_controlador_3digitos e ja fornece dados iniciais
 	bcd_controlador_3digitos counter(.ck(ck), .rst_s(1'b0), .ld(1'b1), .enb_0(1'b1),
 								.sgm0(sgm0), .sgm1(sgm1), .sgm2(sgm2),
 								.enb_3(enb_3));
-  // Generate clock
+  // Gera clock
   always begin
 		#1 ck = ~ck;
   end
-  // Stimulus
+  // Dados para a simulação
   initial begin
     $dumpfile("simulacoes/vcd/bcd.vcd");
 	$dumpvars(0, bcd_tb);

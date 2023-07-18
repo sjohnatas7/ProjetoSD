@@ -1,76 +1,87 @@
-module maquina_de_estados( input ck,
-					  input inicio,
-					  input Vint_z,
-					  input enb_3,
-					  output reg enb_0,
-					  output reg rst_s,
-					  output reg ch_vm,
-					  output reg ch_ref,
-					  output reg ch_zr,
-					  output reg ld);
+/*
+Módulo Máquina de Estados
 
-	localparam IDLE=0, START=1, COUNT_TX=2, COUNT_TM=3, STOP=4;
+Este módulo implementa uma máquina de estados para controlar o comportamento do sistema.
 
-	reg [2:0] state, next_state;
+*/
 
-	initial begin
-		state = IDLE;
-		next_state = IDLE;
+module maquina_de_estados(
+    input ck,
+    input inicio,
+    input Vint_z,
+    input enb_3,
+    output reg enb_0,
+    output reg rst_s,
+    output reg ch_vm,
+    output reg ch_ref,
+    output reg ch_zr,
+    output reg ld
+);
+    localparam IDLE=0, START=1, COUNT_TX=2, COUNT_TM=3, STOP=4;
+
+    reg [2:0] state, next_state;
+
+    initial begin
+        // Inicializações
+        state = IDLE;
+        next_state = IDLE;
 	end
 
-	always @ (posedge ck) begin
-			state <= next_state;
-	end
+    always @(posedge ck) begin
+        // Transição de estado na borda de subida do clock
+        state <= next_state;
+    end
  
-	always @ (negedge ck) begin
-		case(state)
-			IDLE: begin
-					next_state <= START;
-			end
-			START: begin
-				if(inicio)
-				  next_state <= COUNT_TX;
-			end
-			COUNT_TX: begin
-				if(enb_3)
-					next_state <= COUNT_TM;
-			end
-			COUNT_TM: begin
-				if(Vint_z)
-					next_state <= STOP;
-			end
-			STOP: begin
-				next_state <= IDLE;
-			end
-		endcase
-	end
+    always @(negedge ck) begin
+        // Lógica da máquina de estados
+        case (state)
+            IDLE: begin
+                next_state <= START;
+            end
+            START: begin
+                if (inicio)
+                    next_state <= COUNT_TX;
+            end
+            COUNT_TX: begin
+                if (enb_3)
+                    next_state <= COUNT_TM;
+            end
+            COUNT_TM: begin
+                if (Vint_z)
+                    next_state <= STOP;
+            end
+            STOP: begin
+                next_state <= IDLE;
+            end
+        endcase
+    end
 
-	always @ (posedge ck) begin
-		case(state)
-			IDLE: begin
-				ch_zr  <= 1;
-				rst_s  <= 1;
-				ld <= 0;
-			end
-			START: begin
-				ch_zr  <= 0;
-			end
-			COUNT_TX: begin
-        		ld <= 1;
-				enb_0 <= 1;
-				ch_vm  <= 1;
-				rst_s  <= 0;
-			end
-			COUNT_TM: begin
-				ch_vm  <= 0;
-				ch_ref <= 1;
-			end
-			STOP: begin
-				enb_0  <= 0;
-				ld <= 0;
-				ch_ref <= 0;
-			end
-		endcase
-	end
-
+    always @(posedge ck) begin
+        // Ações associadas a cada estado na borda de subida do clock
+        case (state)
+            IDLE: begin
+                ch_zr <= 1;
+                rst_s <= 1;
+                ld <= 0;
+            end
+            START: begin
+                ch_zr <= 0;
+            end
+            COUNT_TX: begin
+                ld <= 1;
+                enb_0 <= 1;
+                ch_vm <= 1;
+                rst_s <= 0;
+            end
+            COUNT_TM: begin
+                ch_vm <= 0;
+                ch_ref <= 1;
+            end
+            STOP: begin
+                enb_0 <= 0;
+                ld <= 0;
+                ch_ref <= 0;
+            end
+        endcase
+    end
 endmodule
