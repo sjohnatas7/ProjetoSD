@@ -63,3 +63,13 @@ Para limpar os arquivos gerados pela simulação, execute o comando
 ```
 $ make clean
 ```
+## Realização 
+
+| NOME                             | Nº USP     |
+| ---------------------------------| -----------|
+| BRENO MICHALSKI COLOMBO          | 10289697   |
+| PEDRO FUZIWARA FILHO             | 12676840   |
+| FILIPE SANTOS LOPES              | 13734409   |
+| GABRIEL GARCIA FERREIRA          | 13677160   |
+| JOHNATAS LUIZ DOS SANTOS         | 13676388   |
+| JOSÉ MANOEL FEITOSA              | 12547451   |
