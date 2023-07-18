@@ -5,7 +5,7 @@ Nesta parte do projeto, será apresentada a implementação de um controlador pa
 O conversor analógico para digital de dupla rampa busca converter uma tensão de entrada $V_{in}$ em um sinal digital, que pode ser representado em um display de sete segmentos como feito em alguns multímetros. Para realizar tal conversão, faz-se uso do seguinte sistema integrador:
 
 <div align="center">
-  <img src="../images/image17.png" alt="Figura 1 - Circuito do conversor analógico para digital de rampa dupla" />
+  <img src="images/image17.png" alt="Figura 1 - Circuito do conversor analógico para digital de rampa dupla" />
   <p align="center"><em>Figura 1 - Circuito do conversor analógico para digital de rampa dupla</em></p>
 </div>
 
@@ -14,7 +14,7 @@ Nesse circuito, a conversão inicia com a chave $S_1$ em $V_{in}$, o que leva a 
 Dessa forma, temos o seguinte gráfico de tensão em função do tempo:
 
 <div align="center">
-  <img src="../images/image17.png" alt="Figura 2 - Gráfico da tensão Vout em função do tempo para diferentes valores de Vin do conversor analógico para digital de rampa dupla." />
+  <img src="images/image17.png" alt="Figura 2 - Gráfico da tensão Vout em função do tempo para diferentes valores de Vin do conversor analógico para digital de rampa dupla." />
   <p align="center"><em>Figura 2 - Gráfico da tensão Vout em função do tempo para diferentes valores de Vin do conversor analógico para digital de rampa dupla.</em></p>
 </div>
 
