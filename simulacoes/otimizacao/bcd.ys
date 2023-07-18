@@ -1,12 +1,8 @@
-# read design
 read -sv src/bcd_controlador_3digitos.v
 hierarchy -top bcd_controlador_3digitos
 
-# the high-level stuff
 proc; fsm; opt; memory; techmap; opt
 
-# generate verilog optimized code
 write_verilog simulacoes/src/bcd_controlador_3digitos.v
 
-# cleanup
 clean

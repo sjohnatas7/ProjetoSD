@@ -1,12 +1,8 @@
-# read design
 read -sv src/maquina_de_estados.v
 hierarchy -top maquina_de_estados
 
-# the high-level stuff
 proc; fsm; opt; memory; techmap; opt
 
-# generate verilog optimized code
 write_verilog simulacoes/src/maquina_de_estados.v
 
-# cleanup
 clean

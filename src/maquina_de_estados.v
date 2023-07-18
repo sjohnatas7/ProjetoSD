@@ -17,67 +17,67 @@ module maquina_de_estados(
     output reg ch_zr,
     output reg ld
 );
-    localparam IDLE=0, START=1, COUNT_TX=2, COUNT_TM=3, STOP=4;
+    localparam PARADO=0, RESET=1, CONTAR_TX=2, CONTAR_TM=3, PARAR_CONTADOR=4;
 
-    reg [2:0] state, next_state;
+    reg [2:0] estado, prox_estado;
 
     initial begin
         // Inicializações
-        state = IDLE;
-        next_state = IDLE;
+        estado = PARADO;
+        prox_estado = PARADO;
 	end
 
     always @(posedge ck) begin
         // Transição de estado na borda de subida do clock
-        state <= next_state;
+        estado <= prox_estado;
     end
  
     always @(negedge ck) begin
         // Lógica da máquina de estados
-        case (state)
-            IDLE: begin
-                next_state <= START;
+        case (estado)
+            PARADO: begin
+                prox_estado <= RESET;
             end
-            START: begin
+            RESET: begin
                 if (inicio)
-                    next_state <= COUNT_TX;
+                    prox_estado <= CONTAR_TX;
             end
-            COUNT_TX: begin
+            CONTAR_TX: begin
                 if (enb_3)
-                    next_state <= COUNT_TM;
+                    prox_estado <= CONTAR_TM;
             end
-            COUNT_TM: begin
+            CONTAR_TM: begin
                 if (Vint_z)
-                    next_state <= STOP;
+                    prox_estado <= PARAR_CONTADOR;
             end
-            STOP: begin
-                next_state <= IDLE;
+            PARAR_CONTADOR: begin
+                prox_estado <= PARADO;
             end
         endcase
     end
 
     always @(posedge ck) begin
         // Ações associadas a cada estado na borda de subida do clock
-        case (state)
-            IDLE: begin
+        case (estado)
+            PARADO: begin
                 ch_zr <= 1;
                 rst_s <= 1;
                 ld <= 0;
             end
-            START: begin
+            RESET: begin
                 ch_zr <= 0;
             end
-            COUNT_TX: begin
+            CONTAR_TX: begin
                 ld <= 1;
                 enb_0 <= 1;
                 ch_vm <= 1;
                 rst_s <= 0;
             end
-            COUNT_TM: begin
+            CONTAR_TM: begin
                 ch_vm <= 0;
                 ch_ref <= 1;
             end
-            STOP: begin
+            PARAR_CONTADOR: begin
                 enb_0 <= 0;
                 ld <= 0;
                 ch_ref <= 0;
