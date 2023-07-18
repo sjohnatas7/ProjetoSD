@@ -1,6 +1,6 @@
 # Parte 3 - Contador BCD de 000 a 999
 
-O módulo `bcd_controlador_3digitos.v` é o componente
+Foi implementado um contador BCD (Binary Coded Decimal) com um valor de 000 a 999. Esse contador é utilizado no projeto para controlar cada dígito do display BCD de 3 dígitos.
 
 ## Módulo bcd_controlador:
 
