@@ -2,8 +2,10 @@
 
 O módulo `bcd_controlador_3digitos.v` é o componente
 
+## Módulo bcd_controlador:
 
-## Módulo bcd_counter_3digits:
+Este módulo é o responsável por criar uma instância de `bcd_controlador_3digitos`, e iniciar com um `enb_0` de 1. Além de criar os clocks (`ck`) necessários para o contador e criar a simulação de $6000 sec$.
+## Módulo bcd_controlador_3digitos:
 Este é o módulo principal central responsável pelo controle do display BCD de 3 dígitos. Ele coordena o funcionamento dos três blocos bcd_bloco que controlam cada um dos dígitos do display.
 
  Ele recebe um clock (`ck`), uma entrada de habilitação (`enb`), um sinal de reset síncrono (`rst_s`), um sinal de carregamento (`ld`), e possui três saídas de segmento (`sgm0`, `sgm1`, `sgm2`) e uma saída `enb_3`.
