@@ -4,18 +4,18 @@ Nesta parte do projeto, será apresentada a implementação de um controlador pa
 ## Teoria da Rampa Dupla
 O conversor analógico para digital de dupla rampa busca converter uma tensão de entrada $V_{in}$ em um sinal digital, que pode ser representado em um display de sete segmentos como feito em alguns multímetros. Para realizar tal conversão, faz-se uso do seguinte sistema integrador:
 
-<div align="center">
-  <img src="images/image17.png" alt="Figura 1 - Circuito do conversor analógico para digital de rampa dupla" />
-  <p align="center"><em>Figura 1 - Circuito do conversor analógico para digital de rampa dupla</em></p>
+<div align="center" >
+  <img src="images/image17.png" width="50%" alt="Figura 1 - Circuito do conversor analógico para digital de rampa dupla" />
+  <p align="center" width="50%"><em>Figura 1 - Circuito do conversor analógico para digital de rampa dupla</em></p>
 </div>
 
 Nesse circuito, a conversão inicia com a chave $S_1$ em $V_{in}$, o que leva a integração desse sinal durante o período fixo $T_1$ em $V_{out}$. Após esse momento, a chave $S_1$ muda para $-V_{ref}$, cujo sinal de $V_{out}$ passa a ser integrado até atingir tensão nula, durante um tempo $T_2$. Enquanto isso, a máquina de $n$ estados estará contando o tempo de integração a partir do período do $clock$. 
 
 Dessa forma, temos o seguinte gráfico de tensão em função do tempo:
 
-<div align="center">
-  <img src="images/image17.png" alt="Figura 2 - Gráfico da tensão Vout em função do tempo para diferentes valores de Vin do conversor analógico para digital de rampa dupla." />
-  <p align="center"><em>Figura 2 - Gráfico da tensão Vout em função do tempo para diferentes valores de Vin do conversor analógico para digital de rampa dupla.</em></p>
+<div align="center" width="50%">
+  <img src="images/image17.png" width="50%" alt="Figura 2 - Gráfico da tensão Vout em função do tempo para diferentes valores de Vin do conversor analógico para digital de rampa dupla." />
+  <p align="center" width="50%" ><em>Figura 2 - Gráfico da tensão Vout em função do tempo para diferentes valores de Vin do conversor analógico para digital de rampa dupla.</em></p>
 </div>
 
 
