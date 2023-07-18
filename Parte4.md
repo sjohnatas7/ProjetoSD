@@ -30,7 +30,7 @@ $$T_2=\frac{V_{in}}{V_{ref}}\cdot 2^n \cdot T_{ck}$$
 Assim, como a contagem $x$ da máquina de estados é dada por $\frac{T_2}{T_{ck}}$, temos que:
 
 $$x=\frac{V_{in}}{V_{ref}}\cdot 2^n \Rightarrow V_{in}=x\cdot V_{ref}\cdot 2^-n$$
-Ou seja, a tensão de entrada Vin pode ser convertida em um sinal lógico a partir da contagem x feita pela máquina de estados.
+Ou seja, a tensão de entrada $V_{in}$ pode ser convertida em um sinal lógico a partir da contagem $x$ feita pela máquina de estados.
 
 ## Implementação do Controlador
 O controlador do ADC, representado na Figura 6, é composto por uma máquina de estados que gera os sinais de controle, contadores decimais, registradores e conversores BCD para 7 segmentos. 
