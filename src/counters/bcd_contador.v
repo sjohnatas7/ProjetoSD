@@ -1,5 +1,5 @@
 // Write your modules here!
-module counter # (parameter width = 3, max_value = 7)
+module bcd_contador # (parameter width = 3, max_value = 7)
   (output reg cnt_max, output reg [width - 1:0] q, input enb, input rst_s, input ck);
   
   initial begin

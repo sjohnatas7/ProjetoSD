@@ -18,12 +18,11 @@ module maquina_de_estados( input ck,
 		next_state = IDLE;
 	end
 
-	always @ (negedge ck) begin
+	always @ (posedge ck) begin
 			state <= next_state;
 	end
  
 	always @ (negedge ck) begin
-		//next_state = state;
 		case(state)
 			IDLE: begin
 					next_state <= START;
@@ -46,7 +45,7 @@ module maquina_de_estados( input ck,
 		endcase
 	end
 
-	always @ (negedge ck) begin
+	always @ (posedge ck) begin
 		case(state)
 			IDLE: begin
 				ch_zr  <= 1;
@@ -55,11 +54,12 @@ module maquina_de_estados( input ck,
 			end
 			START: begin
 				ch_zr  <= 0;
-				rst_s  <= 0;
 			end
 			COUNT_TX: begin
+        		ld <= 1;
 				enb_0 <= 1;
 				ch_vm  <= 1;
+				rst_s  <= 0;
 			end
 			COUNT_TM: begin
 				ch_vm  <= 0;
@@ -67,7 +67,7 @@ module maquina_de_estados( input ck,
 			end
 			STOP: begin
 				enb_0  <= 0;
-				ld <= 1;
+				ld <= 0;
 				ch_ref <= 0;
 			end
 		endcase

@@ -1,4 +1,4 @@
-`include "counters/counter.v"
+`include "counters/bcd_contador.v"
 `include "bcd_registrador.v"
 `include "bcd_sgm.v"
 
@@ -6,11 +6,11 @@ module bcd_bloco(input ck,
                     input rst_s,
                     input enb,
                     input ld,
-                    output[6:0] sgm,
+                    output reg [6:0] sgm,
                     output cnt_max);
     wire [3:0] qx;
-	wire [3:0] qs;
-    counter #(.width(4), .max_value(9)) contador (
+    wire [3:0] qs;
+    bcd_contador #(.width(4), .max_value(9)) contador (
         .ck(ck),
         .enb(enb),
         .rst_s(rst_s),

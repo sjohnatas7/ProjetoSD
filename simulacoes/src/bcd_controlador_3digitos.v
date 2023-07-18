@@ -130,21 +130,21 @@ endmodule
 
 (* top =  1  *)
 (* src = "src/bcd_controlador_3digitos.v:3" *)
-module bcd_controlador_3digitos(ck, enb, rst_s, ld, sgm0, sgm1, sgm2, cnt_max);
-  (* src = "src/bcd_controlador_3digitos.v:19" *)
+module bcd_controlador_3digitos(ck, enb_0, rst_s, ld, sgm0, sgm1, sgm2, enb_3);
+  (* src = "src/bcd_controlador_3digitos.v:12" *)
   wire aux_1;
   (* src = "src/bcd_controlador_3digitos.v:19" *)
   wire aux_2;
   (* src = "src/bcd_controlador_3digitos.v:3" *)
   input ck;
-  (* src = "src/bcd_controlador_3digitos.v:10" *)
-  output cnt_max;
   (* src = "src/bcd_controlador_3digitos.v:4" *)
-  input enb;
+  input enb_0;
   (* src = "src/bcd_controlador_3digitos.v:12" *)
   wire enb_1;
-  (* src = "src/bcd_controlador_3digitos.v:12" *)
+  (* src = "src/bcd_controlador_3digitos.v:19" *)
   wire enb_2;
+  (* src = "src/bcd_controlador_3digitos.v:10" *)
+  output enb_3;
   (* src = "src/bcd_controlador_3digitos.v:6" *)
   input ld;
   (* src = "src/bcd_controlador_3digitos.v:5" *)
@@ -155,14 +155,14 @@ module bcd_controlador_3digitos(ck, enb, rst_s, ld, sgm0, sgm1, sgm2, cnt_max);
   output [6:0] sgm1;
   (* src = "src/bcd_controlador_3digitos.v:9" *)
   output [6:0] sgm2;
-  assign aux_1 = enb_1 &(* src = "src/bcd_controlador_3digitos.v:20" *)  enb_2;
-  assign cnt_max = enb_2 &(* src = "src/bcd_controlador_3digitos.v:23" *)  aux_2;
+  assign enb_2 = enb_1 &(* src = "src/bcd_controlador_3digitos.v:20" *)  aux_1;
+  assign enb_3 = enb_2 &(* src = "src/bcd_controlador_3digitos.v:23" *)  aux_2;
   (* module_not_derived = 32'd1 *)
   (* src = "src/bcd_controlador_3digitos.v:13" *)
   bcd_bloco bloco1 (
     .ck(ck),
     .cnt_max(enb_1),
-    .enb(enb),
+    .enb(enb_0),
     .ld(ld),
     .rst_s(rst_s),
     .sgm(sgm0)
@@ -171,7 +171,7 @@ module bcd_controlador_3digitos(ck, enb, rst_s, ld, sgm0, sgm1, sgm2, cnt_max);
   (* src = "src/bcd_controlador_3digitos.v:16" *)
   bcd_bloco bloco2 (
     .ck(ck),
-    .cnt_max(enb_2),
+    .cnt_max(aux_1),
     .enb(enb_1),
     .ld(ld),
     .rst_s(rst_s),
@@ -182,7 +182,7 @@ module bcd_controlador_3digitos(ck, enb, rst_s, ld, sgm0, sgm1, sgm2, cnt_max);
   bcd_bloco bloco3 (
     .ck(ck),
     .cnt_max(aux_2),
-    .enb(aux_1),
+    .enb(enb_2),
     .ld(ld),
     .rst_s(rst_s),
     .sgm(sgm2)
