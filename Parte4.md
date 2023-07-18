@@ -14,8 +14,8 @@ Nesse circuito, a conversão inicia com a chave $S_1$ em $V_{in}$, o que leva a 
 Dessa forma, temos o seguinte gráfico de tensão em função do tempo:
 
 <div align="center" width="50%">
-  <img src="images/image17.png" width="50%" alt="Figura 2 - Gráfico da tensão Vout em função do tempo para diferentes valores de Vin do conversor analógico para digital de rampa dupla." />
-  <p align="center" width="50%" ><em>Figura 2 - Gráfico da tensão Vout em função do tempo para diferentes valores de Vin do conversor analógico para digital de rampa dupla.</em></p>
+  <img src="images/image17.png" width="50%" alt="Figura 2 - Gráfico da tensão Vout em função do tempo para diferentes valores de Vin conversor analógico para digital de rampa dupla." />
+  <p align="center" width="50%" ><em>Figura 2 - Gráfico da tensão V<sub>out</sub> em função do tempo para diferentes valores de V<sub>in</sub> do conversor analógico para digital de rampa dupla.</em></p>
 </div>
 
 
